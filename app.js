@@ -5,23 +5,23 @@ const hbs = require('hbs');
 const app = express();
 const port = 3000;
 
-// Set view engine
+// tells Express to use Handlebars
 app.set('view engine', 'hbs');
 
-// Set views location
+// points to the views folder
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
-// Register partials
+// registers reusable partial files like header and footer
 hbs.registerPartials(path.join(__dirname, 'app_server/views/partials'));
 
-// Static files
+// allows CSS, images, and other static files to load
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
+// connects routes from index.js
 const travelRouter = require('./app_server/routes/index');
 app.use('/', travelRouter);
 
-// Start server
+// starts the server on port 3000
 app.listen(port, () => {
   console.log(`Travlr app listening at http://localhost:${port}`);
 });
