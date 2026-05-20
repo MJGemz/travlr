@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 
+// connects to the database
+const db = require('./app_server/db');
+db.connect();
+
 const app = express();
 const port = 3000;
 
@@ -23,5 +27,5 @@ app.use('/', travelRouter);
 
 // starts the server on port 3000
 app.listen(port, () => {
-  console.log(`Travlr app listening at http://localhost:${port}`);
+    console.log(`Travlr app listening at http://localhost:${port}`);
 });
