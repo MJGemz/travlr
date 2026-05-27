@@ -2,30 +2,33 @@ const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 
-// connects to the database
+// database connection
 const db = require('./app_server/db');
 db.connect();
 
 const app = express();
 const port = 3000;
 
-// tells Express to use Handlebars
+// view engine setup
 app.set('view engine', 'hbs');
-
-// points to the views folder
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
-// registers reusable partial files like header and footer
-hbs.registerPartials(path.join(__dirname, 'app_server/views/partials'));
+hbs.registerPartials(
+    path.join(__dirname, 'app_server/views/partials')
+);
 
-// allows CSS, images, and other static files to load
+// static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// connects routes from index.js
+// existing website routes
 const travelRouter = require('./app_server/routes/index');
 app.use('/', travelRouter);
 
-// starts the server on port 3000
+// API routes
+const apiRouter = require('./app_api/routes/index');
+app.use('/api', apiRouter);
+
+// start server
 app.listen(port, () => {
     console.log(`Travlr app listening at http://localhost:${port}`);
 });
