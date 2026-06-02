@@ -1,0 +1,47 @@
+<div class="container mt-4">
+
+  <h2 class="mb-3">Edit Trip</h2>
+
+  <form [formGroup]="editForm" (ngSubmit)="save()">
+
+    <div class="mb-3">
+      <label class="form-label">Trip Name</label>
+      <input class="form-control" formControlName="name">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Resort</label>
+      <input class="form-control" formControlName="resort">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Length of Stay</label>
+      <input class="form-control" formControlName="length">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Price Per Person</label>
+      <input class="form-control" formControlName="perPerson">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Image URL</label>
+      <input class="form-control" formControlName="image">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" rows="3" formControlName="description"></textarea>
+    </div>
+
+    <button class="btn btn-success" type="submit">
+      Save Changes
+    </button>
+
+    <button class="btn btn-secondary ms-2" type="button" (click)="goBack()">
+      Cancel
+    </button>
+
+  </form>
+
+</div>
