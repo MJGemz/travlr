@@ -4,7 +4,7 @@
     {{ trip.name }}
   </div>
 
-  <img src="assets/images/{{ trip.image }}" class="card-img-top">
+  <img src="http://localhost:3000/{{ trip.image }}" class="card-img-top">
 
   <div class="card-body">
     <h6>{{ trip.resort }}</h6>
@@ -15,9 +15,14 @@
 
     <p [innerHTML]="trip.description"></p>
 
-    <button class="btn btn-primary w-100" (click)="editTrip()">
-      Edit Trip
-    </button>
+    <ng-container *ngIf="isLoggedIn()">
+      <button class="btn btn-primary w-100 mb-2" (click)="editTrip()">
+        Edit Trip
+      </button>
+      <button class="btn btn-danger w-100" (click)="deleteTrip()">
+        Delete Trip
+      </button>
+    </ng-container>
 
   </div>
 

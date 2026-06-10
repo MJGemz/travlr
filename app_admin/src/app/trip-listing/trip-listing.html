@@ -1,47 +1,11 @@
 <div class="container mt-3">
 
+  <p class="text-muted">{{ message }}</p>
+
   <div class="row">
 
     <div *ngFor="let trip of trips" class="col-md-4 mb-4">
-
-      <div class="card h-100 shadow-sm">
-
-        <!-- Image -->
-        <img
-          [src]="trip.image"
-          class="card-img-top"
-          alt="{{ trip.name }}"
-          style="height: 200px; object-fit: cover;"
-        />
-
-        <!-- Header -->
-        <div class="card-header text-center fw-bold">
-          {{ trip.name }}
-        </div>
-
-        <!-- Body -->
-        <div class="card-body">
-
-          <h6 class="mb-2">{{ trip.resort }}</h6>
-
-          <p class="mb-2">
-            {{ trip.length }} days — ${{ trip.perPerson }} per person
-          </p>
-
-          <p class="text-muted" [innerHTML]="trip.description"></p>
-
-          <!-- Edit Button -->
-          <button
-            class="btn btn-primary btn-sm w-100 mt-2"
-            (click)="editTrip(trip)"
-          >
-            Edit Trip
-          </button>
-
-        </div>
-
-      </div>
-
+      <app-trip-card [trip]="trip"></app-trip-card>
     </div>
 
   </div>
